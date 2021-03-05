@@ -1,0 +1,219 @@
+!<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .container{
+  max-width:600px;
+}
+.col-sm-3{
+  text-align:center;
+  margin-bottom:10px;
+  height:100px;
+  margin:10px;
+}
+.red{
+  background-color:#eb4034;
+}
+.black{
+  background-color:#000000;
+}
+.orange{
+  background:#fc9700;
+}
+.skyblue{
+   background:#00effc;
+}
+.green{
+  background:#00fc37;
+}
+.brown{
+  background: #d9941e;
+}
+.gray{
+  background:#cfcfcf;
+}
+.blue{
+  background:#2b02f5;
+}
+.purble{
+  background:#b300ff;
+}
+.pink{
+  background:#ff00fb;
+}
+.yellow{
+  background:#fff700;
+}
+
+</style> 
+</head>
+  <body>
+      
+
+    <div class ="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h5 class="mb-2">Choose <span class="update-name"></span> color</h5>
+            </div>
+          </div>
+        <div class="row third">
+          <div class="col-sm-3 ">
+            
+          </div>
+          <div class="col-sm-3 ">
+            
+          </div>
+          <div class="col-sm-3">
+              
+          </div>
+          <div class="col-sm-3">
+              
+          </div>
+          <div class="col-sm-3">
+              
+          </div>
+          <div class="col-sm-3">
+              
+          </div>
+          <div class="col-sm-3">
+              
+          </div>
+          <div class="col-sm-3">
+             
+          </div>
+          <div class="col-sm-3">
+            
+          </div>
+          <div class="col-sm-3">
+             
+          </div>
+          <div class="col-sm-3">
+             
+          </div>
+           <div class="col-sm-3">
+             
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <button class="btn btn-primary" id="check">Check</button>
+            </div>
+          <div class="col-sm-12">
+            <p id="status"></p>
+          </div>
+          </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+<script>
+    $(function () {
+  var selected = [];
+  $(".col-sm-3").click(function () {
+    $(this).css("opacity", "0.3");
+    var color = $(this).css("background-color");
+    var x = RGBToHex(color);
+    function RGBToHex(rgb) {
+      // Choose correct separator
+      let sep = rgb.indexOf(",") > -1 ? "," : " ";
+     
+      rgb = rgb.substr(4).split(")")[0].split(sep);
+
+      let r = (+rgb[0]).toString(16),
+        g = (+rgb[1]).toString(16),
+        b = (+rgb[2]).toString(16);
+
+      if (r.length == 1) r = "0" + r;
+      if (g.length == 1) g = "0" + g;
+      if (b.length == 1) b = "0" + b;
+
+      return "#" + r + g + b;
+    }
+    console.log(x);
+
+    selected.push(x);
+  });
+  $("#check").click(function () {
+    var chck = 0;
+    var color = {
+      red: "#eb4034",
+      black: "#000000",
+      orange: "#fc9700",
+      skyblue: "#00effc",
+      green: "#00fc37",
+      brown: "#d9941e",
+      gray: "#cfcfcf",
+      blue: "#2b02f5",
+      purble: "#b300ff",
+      pink: "#ff00fb",
+      yellow: "#fff700"
+    };
+    for (let [key, value] of Object.entries(color)) {
+      if (key == aa) {
+        chck = value;
+      }
+    }
+    var x = selected.every((val, i, arr) => val === arr[0]);
+    var y = selected[0] == chck;
+
+    var slectedElement = selected.length;
+    console.log(slectedElement);
+    if (numerDiv != 0) {
+      if (x == y && slectedElement == numerDiv) {
+        $("#status").text("Success").css("color", "green");
+      } else {
+        $("#status").text("Wrong").css("color", "red");
+      }
+    } else {
+      if (selected == 0) {
+        $("#status").text("Success").css("color", "green");
+      } else {
+        $("#status").text("Wrong").css("color", "red");
+      }
+    }
+  });
+
+  var aa = random();
+
+  function random() {
+    var myArray = [
+      "red",
+      "blue",
+      "skyblue",
+      "green",
+      "orange",
+      "black",
+      "brown",
+      "gray",
+      "purble",
+      "pink",
+      "yellow"
+    ];
+
+    var getValue = myArray[Math.floor(Math.random() * myArray.length)];
+    return getValue;
+  }
+  $(".update-name").text(aa);
+
+  $(".col-sm-3").each(function () {
+    var bb = random();
+    $(this).addClass(bb);
+  });
+  var numerDiv = $("." + aa).length;
+ 
+});
+
+    </script>
+
+</body>
+</html>
